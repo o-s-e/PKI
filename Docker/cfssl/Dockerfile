@@ -37,7 +37,7 @@ COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 
 #  RUN chmod +x /opt/cfssl/entrypoint.sh
 
-CMD ["/tmp/entrypoint.sh"]
+CMD ["/opt/cfssl/entrypoint.sh"]
 
 # Works upstream docker 1.12
 #HEALTHCHECK --interval=5m --timeout=3s \
