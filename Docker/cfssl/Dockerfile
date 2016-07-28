@@ -9,7 +9,7 @@ RUN apt-get update && \
     chown -R cfssl:cfssl /opt/cfssl
 
 COPY  entrypoint.sh /tmp/entrypoint.sh
-RUN chmod +x /tmp/entrypoint.sh
+RUN chmod a+x /tmp/entrypoint.sh
 
 USER cfssl
 WORKDIR /opt/cfssl
@@ -17,9 +17,8 @@ WORKDIR /opt/cfssl
 COPY ./config/ca.json /opt/cfssl/ca.json
 COPY ./config/config.json /opt/cfssl/config.json
 
-RUN cfssl \
-        genkey \
-        -initca /opt/cfssl/ca.json | cfssljson -bare ca
+#Initialize the CA cert & key
+RUN cfssl genkey  -initca /opt/cfssl/ca.json | cfssljson -bare ca
 
 
 CMD ["/tmp/entrypoint.sh"]

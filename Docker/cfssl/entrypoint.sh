@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 echo"Starting cfssl server"
 exec cfssl \
         serve \
