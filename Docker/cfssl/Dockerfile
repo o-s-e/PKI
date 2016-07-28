@@ -1,5 +1,4 @@
-FROM
-debian/lastest
+FROM debian/lastest
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
 ENV GOPATH /go
 ENV USER root
