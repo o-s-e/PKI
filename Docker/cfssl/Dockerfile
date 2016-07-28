@@ -19,7 +19,7 @@ COPY ./config/config.json /opt/cfssl/config.json
 
 RUN cfssl \
         genkey \
-        -initca /opt/cfssl/ca.json | cfssljson ca
+        -initca /opt/cfssl/ca.json | cfssljson -bare ca
 
 
 CMD ["/tmp/entrypoint.sh"]
