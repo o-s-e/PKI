@@ -24,6 +24,9 @@ RUN groupadd -r cfssl -g 433 && \
     mkdir -p /opt/cfssl && \
     chown -R cfssl:cfssl /opt/cfssl
 
+COPY entrypoint.sh /opt/cfssl/entrypoint.sh
+RUN chmod a+x /opt/cfssl/entrypoint.sh
+
 USER cfssl
 WORKDIR /opt/cfssl
 
@@ -33,9 +36,8 @@ COPY ./config/config.json /opt/cfssl/config.json
 #Initialize the CA cert & key
 RUN cfssl genkey  -initca /opt/cfssl/ca.json | cfssljson -bare ca
 
-COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 
-#  RUN chmod +x /opt/cfssl/entrypoint.sh
+
 
 CMD ["/opt/cfssl/entrypoint.sh"]
 
