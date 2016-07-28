@@ -8,11 +8,13 @@ RUN apt-get update && \
     mkdir -p /opt/cfssl && \
     chown -R cfssl:cfssl /opt/cfssl
 
+COPY entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
+
 USER cfssl
 WORKDIR /opt/cfssl
 
 
-COPY entrypoint.sh /tmp/entrypoint.sh
-RUN chmod +x /tmp/entrypoint.sh
+
 
 CMD ["/tmp/entrypoint.sh"]
