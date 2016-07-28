@@ -1,0 +1,9 @@
+version: '2'
+services:
+  cfssl:
+    build: cfssl/
+    ports:
+      - "8888:8888"
+    volumes:
+      - config/config.json:/opt/cfssl/config.json
+      - config/ca.json:/opt/ca.json
