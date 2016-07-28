@@ -1,4 +1,4 @@
-FROM cfssl:cfssl
+FROM cfssl:latest
 
 RUN apt-get update && \
     apt-get -y install python2.7 python-pip && \
