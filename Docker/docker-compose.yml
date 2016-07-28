@@ -6,4 +6,4 @@ services:
       - "8888:8888"
     volumes:
       - ./config/config.json:/opt/cfssl/config.json
-      - ./config/ca.json:/opt/ca.json
+      - ./config/ca.json:/opt/cfssl/ca.json

@@ -16,9 +16,7 @@ WORKDIR /opt/cfssl
 
 RUN cfssl \
         genkey \
-        -initca /opt/ca.json | cfssljson ca
-        echo "Starting cfssl server"
-
+        -initca /opt/cfssl/ca.json | cfssljson ca
 
 
 CMD ["/tmp/entrypoint.sh"]
