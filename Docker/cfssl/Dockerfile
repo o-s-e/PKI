@@ -8,8 +8,7 @@ RUN apt-get update && \
     mkdir -p /opt/cfssl && \
     chown -R cfssl:cfssl /opt/cfssl
 
-COPY  entrypoint.sh /tmp/entrypoint.sh
-RUN chmod a+x /tmp/entrypoint.sh
+
 
 USER cfssl
 WORKDIR /opt/cfssl
@@ -21,4 +20,7 @@ COPY ./config/config.json /opt/cfssl/config.json
 RUN cfssl genkey  -initca /opt/cfssl/ca.json | cfssljson -bare ca
 
 
-CMD ["/tmp/entrypoint.sh"]
+CMD ["cfssl serve \
+        -config /opt/cfssl/config.json \
+        -ca /opt/cfssl/ca.pem \
+        -ca-key /opt/cfssl/ca-key.pem"]
