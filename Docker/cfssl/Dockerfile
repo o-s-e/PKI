@@ -14,6 +14,10 @@ RUN chmod +x /tmp/entrypoint.sh
 USER cfssl
 WORKDIR /opt/cfssl
 
+RUN cfssl \
+        genkey \
+        -initca /opt/ca.json | cfssljson ca
+        echo "Starting cfssl server"
 
 
 
