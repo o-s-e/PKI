@@ -1,4 +1,4 @@
-FROM cloudflare:cfssl
+FROM cfssl:cfssl
 
 RUN apt-get update && \
     apt-get -y install python2.7 python-pip && \
