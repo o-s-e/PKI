@@ -5,7 +5,8 @@ ENV USER root
 
 RUN apt-get update && \
     apt-get install -y \
-    golang &&\
+    golang \
+    git \
     go get -u github.com/cloudflare/cfssl/cmd/cfssl && \
     go get -u github.com/cloudflare/cfssl/cmd/...
 
