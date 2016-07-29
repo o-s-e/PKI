@@ -11,8 +11,8 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 ch.setFormatter(formatter)
 logger.addHandler(ch)
 
-CERT_PATH = "/foo/bar"
-KEY_PATH = "/lar/far"
+CERT_PATH = "C:\WS\cert.pem"
+KEY_PATH = "C:\WS\key.pem"
 CFSSL_URL = "http://192.168.99.100:8888"
 MODE = True
 
@@ -33,7 +33,9 @@ def main():
     }]
     logger.info('Starting')
     if not os.path.exists(cert_path):
-        if not mode:
+        logger.info('Checking path')
+        if mode:
+            logger.info('Checking mode')
             url = '{0}/api/v1/cfssl/newcert'.format(cfssl_url)
 
             data = {
@@ -46,6 +48,7 @@ def main():
 
             response = requests.post(url, data=json.dumps(data)).json()
 
+            logger.debug('Response: {}'.format(str(response)))
             with open(cert_path, 'w') as fp:
                 fp.write(response['result']['certificate'])
 
