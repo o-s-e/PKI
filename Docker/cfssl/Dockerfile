@@ -3,7 +3,7 @@ MAINTAINER ose
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
 ENV GOPATH /go
 ENV USER root
-
+EXPOSE 8888
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
